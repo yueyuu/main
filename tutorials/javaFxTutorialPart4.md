@@ -9,7 +9,7 @@ While we have produced a fully functional prototype, there are a few major probl
    Every small change requires us to rebuild and run the application.  
 
 1. Components are heavily dependent on each other:
-   Why does `Main` need to know that `DialogBox` needs a `Label`? 
+   Why does `Main` need to know that `gazeeebo.DialogBox` needs a `Label`? 
    What happens if we change the `Label` to a custom `ColoredLabel` in the future?  
     
     We need to minimize the amount of information each control needs to know about another.
@@ -60,7 +60,7 @@ Create the following files in `src/main/resources/view`:
 </AnchorPane>
 ```
 
-**DialogBox.fxml**
+**gazeeebo.DialogBox.fxml**
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -94,10 +94,10 @@ We will get to that later.
  
    ![Controller for MainWindow](assets/MainWindowController.png)
 
-1. Let’s repeat the process for `DialogBox`.
-   The main difference here is that DialogBox checks `Use fx:root construct` and _does not define a controller class_. 
+1. Let’s repeat the process for `gazeeebo.DialogBox`.
+   The main difference here is that gazeeebo.DialogBox checks `Use fx:root construct` and _does not define a controller class_. 
 
-   ![Settings for DialogBox](assets/DialogBoxController.png)
+   ![Settings for gazeeebo.DialogBox](assets/DialogBoxController.png)
 
 ## Using Controllers
 
@@ -151,8 +151,8 @@ public class MainWindow extends AnchorPane {
         String input = userInput.getText();
         String response = duke.getResponse(input);
         dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                gazeeebo.DialogBox.getUserDialog(input, userImage),
+                gazeeebo.DialogBox.getDukeDialog(response, dukeImage)
         );
         userInput.clear();
     }
@@ -206,9 +206,9 @@ public class Main extends Application {
 
 Again, we can interact with the `AnchorPane` defined in the FXML as we would have if we created the `AnchorPane` ourselves.
 
-For our custom `DialogBox`, we did not define a controller so let's create a controller for it.
+For our custom `gazeeebo.DialogBox`, we did not define a controller so let's create a controller for it.
 
-**DialogBox.java**
+**gazeeebo.DialogBox.java**
 ```java
 import java.io.IOException;
 import java.util.Collections;
@@ -229,15 +229,15 @@ import javafx.scene.layout.HBox;
  * This control represents a dialog box consisting of an ImageView to represent the speaker's face and a label
  * containing text from the speaker.
  */
-public class DialogBox extends HBox {
+public class gazeeebo.DialogBox extends HBox {
     @FXML
     private Label dialog;
     @FXML
     private ImageView displayPicture;
 
-    private DialogBox(String text, Image img) {
+    private gazeeebo.DialogBox(String text, Image img) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("/view/DialogBox.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("/view/gazeeebo.DialogBox.fxml"));
             fxmlLoader.setController(this);
             fxmlLoader.setRoot(this);
             fxmlLoader.load();
@@ -259,20 +259,20 @@ public class DialogBox extends HBox {
         setAlignment(Pos.TOP_LEFT);
     }
 
-    public static DialogBox getUserDialog(String text, Image img) {
-        return new DialogBox(text, img);
+    public static gazeeebo.DialogBox getUserDialog(String text, Image img) {
+        return new gazeeebo.DialogBox(text, img);
     }
 
-    public static DialogBox getDukeDialog(String text, Image img) {
-        var db = new DialogBox(text, img);
+    public static gazeeebo.DialogBox getDukeDialog(String text, Image img) {
+        var db = new gazeeebo.DialogBox(text, img);
         db.flip();
         return db;
     }
 }
 ```
 
-When we create a new instance of `DialogBox`, we set both the controller and root Node to `DialogBox`. 
-From this point onwards we can interact with `DialogBox` as we have in the previous tutorials.
+When we create a new instance of `gazeeebo.DialogBox`, we set both the controller and root Node to `gazeeebo.DialogBox`. 
+From this point onwards we can interact with `gazeeebo.DialogBox` as we have in the previous tutorials.
 
 The last change that we have to make is to point our `Launcher` class in the right direction:
 In `Launcher.java`

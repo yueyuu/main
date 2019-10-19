@@ -18,11 +18,13 @@ import java.util.Comparator;
 
 public class Ui {
     public String FullCommand;
+    public static String gazeeeboReply;
 
 
     public void ReadCommand() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         FullCommand = reader.readLine();
+
     }
 
     /**
@@ -127,8 +129,6 @@ public class Ui {
         System.err.println("An IOException was caught :" + e.getMessage());
     }
 
-    public void showErrorMessage(Exception e) {
-        System.out.println(e.getMessage());
-    }
+    public void showErrorMessage(Exception e) { gazeeeboReply = e.getMessage(); }
 
 }

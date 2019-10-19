@@ -1,3 +1,4 @@
+import gazeeebo.DialogBox;
 import gazeeebo.tasks.Task;
 import gazeeebo.TriviaManager.TriviaManager;
 import gazeeebo.UI.Ui;
@@ -29,7 +30,7 @@ import java.util.Stack;
 public class Duke extends Application {
     private ScrollPane scrollPane;
     private VBox dialogContainer;
-    private TextField userInput;
+    private static TextField userInput;
     private Button sendButton;
     private Scene scene;
 
@@ -59,7 +60,8 @@ public class Duke extends Application {
             NoteStorage.readFromFile("NoteMonthly.txt", NoteList.monthly);
             ui.UpcomingTask(list);
             while (!isExit) {
-                ui.ReadCommand();
+                //ui.ReadCommand(userInput.getText());
+                ui.FullCommand = userInput.getText();
                 String command = ui.FullCommand.trim();
                 Command c = Parser.parse(command);
                 c.execute(list, ui, store, CommandStack, deletedTask,triviaManager);
@@ -84,12 +86,6 @@ public class Duke extends Application {
 
     @Override
     public void start(Stage stage) {
-        Label helloWorld = new Label("Hello World!"); // Creating a new Label control
-        Scene scene = new Scene(helloWorld); // Setting the scene to be our Label
-
-        stage.setScene(scene); // Setting the stage to show our screen
-        stage.show(); // Render the stage.
-
         //The container for the content of the chat to scroll.
         scrollPane = new ScrollPane();
         dialogContainer = new VBox();
@@ -107,7 +103,7 @@ public class Duke extends Application {
         stage.show();
 
         //Step 2. Formatting the window to look as expected
-        stage.setTitle("Duke");
+        stage.setTitle("Gazeeebo");
         stage.setResizable(false);
         stage.setMinHeight(600.0);
         stage.setMinWidth(400.0);
@@ -170,7 +166,8 @@ public class Duke extends Application {
      */
     private void handleUserInput() {
         Label userText = new Label(userInput.getText());
-        Label dukeText = new Label(getResponse(userInput.getText()));
+        main(null);
+        Label dukeText = new Label(Ui.gazeeeboReply);
         dialogContainer.getChildren().addAll(
                 new DialogBox(userText, new ImageView(user)),
                 new DialogBox(dukeText, new ImageView(duke))
