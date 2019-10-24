@@ -11,13 +11,13 @@ import java.util.Scanner;
 
 public class NotePageStorage {
     public static void writeToGoalFile() throws IOException {
-        FileWriter file = new FileWriter("data/note/note-page/goal.txt");
+        FileWriter file = new FileWriter("src/main/resources/note/note-page/goal.txt");
         file.write(GeneralNotePage.goal);
         file.close();
     }
 
     public static void readFromGoalFile() throws IOException {
-        File data = new File("data/note/note-page/goal.txt");
+        File data = new File("src/main/resources/note/note-page/goal.txt");
         if (data.createNewFile()) {
             System.out.println("Existing goal.txt file does not exist.");
             System.out.println("I have created a new text file for you.");
@@ -30,7 +30,7 @@ public class NotePageStorage {
     }
 
     public static void writeToModulesFile() throws IOException {
-        FileWriter file = new FileWriter("data/note/note-page/modules.txt");
+        FileWriter file = new FileWriter("src/main/resources/note/note-page/modules.txt");
         for (Module m : GeneralNotePage.modules) {
             file.write(m.name + "\n");
             file.write(m.assessments.size() + "\n");
@@ -47,7 +47,7 @@ public class NotePageStorage {
     }
 
     public static void readFromModulesFile() throws IOException {
-        File data = new File("data/note/note-page/modules.txt");
+        File data = new File("src/main/resources/note/note-page/modules.txt");
         if (data.createNewFile()) {
             System.out.println("Existing modules.txt file does not exist.");
             System.out.println("I have created a new text file for you.");

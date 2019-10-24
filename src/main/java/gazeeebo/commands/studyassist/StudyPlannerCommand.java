@@ -60,9 +60,9 @@ public class StudyPlannerCommand {
         System.out.println(" +-----------------------------------------------------------------------+");
         int biggestsize = 0;
         for(int i=0;i<StudyPlan.size();i++){
-           if(biggestsize < StudyPlan.get(i).size()) {
-               biggestsize = StudyPlan.get(i).size();
-           }
+            if(biggestsize < StudyPlan.get(i).size()) {
+                biggestsize = StudyPlan.get(i).size();
+            }
         }
 //        System.out.println(biggestsize);
         ArrayList<StringBuilder> printplan = new ArrayList<StringBuilder>();

@@ -33,7 +33,7 @@ public class taskCommand extends Command {
             String[] splitCommand = command.split(" ");
             if (splitCommand[0].equals("help")) {
                 new HelpCommand().execute(list,ui,storage,commandStack,deletedTask,triviaManager);
-        } else if (splitCommand[0].equals("list")) {
+            } else if (splitCommand[0].equals("list")) {
                 if (command.contains("event")) {
                     new CategoryListCommand().execute(list,ui,storage,commandStack,deletedTask,triviaManager);
                 } else if (command.contains("deadline")) {

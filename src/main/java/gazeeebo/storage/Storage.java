@@ -25,14 +25,14 @@ import java.util.stream.*;
 
 public class Storage {
 
-    private String absolutePath = "Save.txt";
-    private String absolutePath_password = "Password.txt";
-    private String absolutePath_Contact = "Contact.txt";
-    private String absolutePath_Expenses = "Expenses.txt";
-    private String absolutePath_Places = "Places.txt";
-    private String absolutePath_Trivia = "Trivia.txt";
-    private String absolutePath_GPA = "Gpa.txt";
-    private String absolutePath_StudyPlanner = "Study_Plan.txt";
+    private String absolutePath = "src/main/resources/data/Save.txt";
+    private String absolutePath_password = "src/main/resources/data/Password.txt";
+    private String absolutePath_Contact = "src/main/resources/data/Contact.txt";
+    private String absolutePath_Expenses = "src/main/resources/data/Expenses.txt";
+    private String absolutePath_Places = "src/main/resources/data/Places.txt";
+    private String absolutePath_Trivia = "src/main/resources/data/Trivia.txt";
+    private String absolutePath_GPA = "src/main/resources/data/Gpa.txt";
+    private String absolutePath_StudyPlanner = "src/main/resources/data/Study_Plan.txt";
 
     public void Storages(String fileContent) throws IOException {
         FileWriter fileWriter = new FileWriter(absolutePath);

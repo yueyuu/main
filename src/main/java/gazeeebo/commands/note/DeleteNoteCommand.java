@@ -30,7 +30,7 @@ public class DeleteNoteCommand extends EditNoteCommand {
      * @throws DukeException if the note to delete does not exist
      */
     private String deleteNoteInList(int noteNumber, ArrayList<Note> listToEdit, LocalDate dateToEdit,
-                                String period, String fileName) throws DukeException{
+                                    String period, String fileName) throws DukeException{
         for (Note n: listToEdit) {
             if (n.noteDate.equals(dateToEdit)) {
                 try {
