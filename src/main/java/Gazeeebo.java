@@ -9,6 +9,7 @@ import gazeeebo.parsers.Parser;
 import gazeeebo.exception.DukeException;
 import gazeeebo.storage.NoteStorage;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Stack;
@@ -19,11 +20,12 @@ public class Gazeeebo {
      *
      * @param args a String array that takes in input from the command line
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, URISyntaxException {
         ArrayList<Task> list;
         Stack<ArrayList<Task>> CommandStack = new Stack<ArrayList<Task>>();
         ArrayList<Task> deletedTask = new ArrayList<Task>();
         Storage store = new Storage();
+        store.getJarDir();
         TriviaManager triviaManager = new TriviaManager(store);
         boolean isExit = false;
         Ui ui = new Ui();
