@@ -19,7 +19,7 @@ dependencies {
 }
 shadowJar {
     archiveBaseName = "gazeeebo"
-    archiveVersion = "final"
+    archiveVersion = "final2"
     archiveClassifier = null
     archiveAppendix = null
 }
